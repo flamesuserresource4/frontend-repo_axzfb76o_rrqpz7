@@ -1,70 +1,67 @@
+import React from 'react'
+import MenuHeader from './components/MenuHeader'
+import Ticker from './components/MarqueeTicker'
+import Category from './components/Category'
+import AnimatedSpecials from './components/AnimatedSpecials'
+
+const starters = [
+  { name: 'Charred Avocado', desc: 'Citrus, chili oil, sea salt', price: '$9', badge: 'v' },
+  { name: 'Wood-Fired Wings', desc: 'Smoked paprika rub, lemon honey', price: '$12', badge: '⭐' },
+  { name: 'Roasted Beet Salad', desc: 'Goat cheese, pistachio, orange', price: '$11', badge: 'v' },
+]
+
+const mains = [
+  { name: 'Oak-Grilled Ribeye', desc: 'Herb butter, crispy potatoes', price: '$29' },
+  { name: 'Cedar Plank Salmon', desc: 'Maple glaze, charred lemon', price: '$24' },
+  { name: 'Wild Mushroom Pasta', desc: 'Parmesan, thyme, truffle oil', price: '$19', badge: 'v' },
+]
+
+const drinks = [
+  { name: 'Smoked Old Fashioned', desc: 'Bourbon, demerara, orange', price: '$12' },
+  { name: 'Charred Pineapple Margarita', desc: 'Reposado, lime, agave', price: '$11' },
+  { name: 'House Lemonade', desc: 'Fresh‑squeezed, mint', price: '$5' },
+]
+
+const specials = [
+  { name: 'Porcini-Crusted Lamb', price: '$32', desc: 'Mint gremolata, pan jus' },
+  { name: 'Fire-Kissed Octopus', price: '$28', desc: 'Smoked paprika, fennel' },
+  { name: 'Burnt Basque Cheesecake', price: '$10', desc: 'Amarena cherry' },
+]
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-amber-50">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="w-full h-full opacity-[0.08] bg-[radial-gradient(ellipse_at_top,rgba(251,191,36,0.35),transparent_60%)]" />
+      </div>
 
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
+      <div className="relative mx-auto max-w-5xl px-6 py-10">
+        <MenuHeader />
 
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
+        <div className="mb-8">
+          <Ticker items={[
+            'Happy Hour 4–6PM',
+            'Ask about our gluten‑free options',
+            'Reservations recommended on weekends',
+            'Now pouring: Small‑batch local IPAs',
+          ]} speed={50} />
+        </div>
 
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
-          </div>
-
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <Category title="Starters" items={starters} />
+          <Category title="Mains" items={mains} />
+          <div className="md:col-span-2">
+            <Category title="Drinks" items={drinks} />
           </div>
         </div>
+
+        <div className="mt-12">
+          <AnimatedSpecials items={specials} />
+        </div>
+
+        <footer className="mt-12 text-center text-amber-100/60 text-sm">
+          Prices include applicable taxes. 18% gratuity may be added to parties of six or more.
+        </footer>
       </div>
     </div>
   )

@@ -44,3 +44,25 @@
     --tw-exit-translate-y: initial;
   }
 }
+
+/* Keyframes for text effects and tickers */
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ensure animated gradients look smooth */
+.shimmer-text {
+  background-size: 200% 200%;
+}
